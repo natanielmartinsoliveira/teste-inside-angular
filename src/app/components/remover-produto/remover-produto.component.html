@@ -1,0 +1,9 @@
+<h2>Remover Produto do Pedido {{ pedidoId }}</h2>
+<p>Tem certeza que deseja remover o produto {{ produtoId }} do pedido {{ pedidoId }}?</p>
+
+<div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+</div>
+
+<button (click)="removerProduto()">Remover Produto</button>
+  

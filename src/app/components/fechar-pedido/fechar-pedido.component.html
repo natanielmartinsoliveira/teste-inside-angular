@@ -1,0 +1,8 @@
+<h2>Fechar Pedido {{ pedidoId }}</h2>
+<p>Tem certeza que deseja fechar o pedido {{ pedidoId }}?</p>
+
+<div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+</div>
+
+<button (click)="fecharPedido()">Fechar Pedido</button>

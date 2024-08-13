@@ -1,0 +1,14 @@
+<h2>Adicionar Produto ao Pedido {{ pedidoId }}</h2>
+
+<form (ngSubmit)="adicionarProduto()">
+  <label for="nome">Nome:</label>
+  <input id="nome" [(ngModel)]="produto.nome" name="nome" required>
+
+  <label for="descricao">Descrição:</label>
+  <input id="descricao" [(ngModel)]="produto.descricao" name="descricao" required>
+
+  <label for="preco">Preço:</label>
+  <input id="preco" [(ngModel)]="produto.preco" name="preco" type="number" required>
+
+  <button type="submit">Adicionar Produto</button>
+</form>

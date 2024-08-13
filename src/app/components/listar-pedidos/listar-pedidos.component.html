@@ -1,0 +1,26 @@
+<h1>Listar Pedidos</h1>
+
+<button (click)="iniciarPedido()" style="margin-bottom: 25px; line-break: auto;">Iniciar Pedido</button><br />
+
+<label for="statusFilter">Filtrar por status:</label>
+<select id="statusFilter" (change)="onStatusChange($event)">
+  <option value="todos">Todos</option>
+  <option value="aberto">Aberto</option>
+  <option value="fechado">Fechado</option>
+</select>
+
+<ul>
+  <li *ngFor="let pedido of pedidos$ | async" style="margin-bottom: 25px;">
+    <p>Pedido ID: {{ pedido.id }} | Fechado: {{ pedido.fechado ? 'Sim' : 'Não' }}</p>
+    
+    <ul style="margin-bottom: 15px;">
+      <li *ngFor="let produto of pedido.produtos" >
+        Produto: {{ produto.nome }} - Preço: {{ produto.preco }} 
+        <button (click)="removerProduto(pedido.id, produto.id)" [disabled]="pedido.fechado">Remover Produto</button>
+      </li>
+    </ul>
+
+    <button (click)="adicionarProduto(pedido.id)" [disabled]="pedido.fechado" style="margin-left: 35px;">Adicionar Produto</button>
+    <button (click)="fecharPedido(pedido.id)" [disabled]="pedido.fechado || pedido.produtos.length === 0" style="margin-left: 5px;">Fechar Pedido</button>
+  </li>
+</ul>
